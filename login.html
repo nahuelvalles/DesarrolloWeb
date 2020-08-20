@@ -14,7 +14,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    html, body{
+    html,
+    body {
       height: 100%;
     }
 
@@ -34,20 +35,44 @@
       padding: 15px;
       margin: auto;
     }
+  
+    form{
+      border: 1px;
+      border-style: solid;
+      border-color: rgb(8, 143, 177);
+      border-radius: 10px;
+      margin-left: 35%;
+      width: 30%;
+      padding: 2%;
+    }
+    .mantener_Conectado{
+      margin-top: 1em;
+    }
+    #enviar{
+      margin-top: 1em;
+    }
+
   </style>
 </head>
 
 <body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) -> Punto 3 y 4.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+  <div class="container">
+    <h2>Identifícate</h2>
+    <form action="index.html">
+      <fieldset class="user">
+        <input type="text" name="username" placeholder="Usuario / eMail" required>
+        <input type="password" name="pass" placeholder="Contraseña" required>
+      </fieldset>
+      <fieldset class="mantener_Conectado">
+        <input type="checkbox" name="allways_On"> Mantenerme conectado
+      </fieldset>
+      <input id="enviar" type="submit" onclick="sessionStorage.setItem('visitado','1'); location.href=index.html" value="Ingresar">
+    </form>
   </div>
+
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>
