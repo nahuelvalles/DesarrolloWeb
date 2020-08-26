@@ -40,9 +40,13 @@ var getJSONData = function(url){
     });
 }
 
-let logueado = sessionStorage.getItem("visitado");
-if(!location.href.endsWith("login.html")&&(logueado!=1)){
-  window.location.replace("login.html");
+//let logueado = sessionStorage.getItem("visitado");
+//if(!location.href.endsWith("login.html")&& !(logueado==="true")){
+  //window.location.replace("login.html");
+//}
+
+if(!location.href.endsWith("login.html")&& !(sessionStorage.getItem("visitado")==="true")){
+  window.location.href= "login.html";
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de

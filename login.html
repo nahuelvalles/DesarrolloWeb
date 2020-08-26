@@ -58,15 +58,15 @@
 <body class="text-center">
   <div class="container">
     <h2>Identifícate</h2>
-    <form action="index.html">
+    <form id="formularioLogin" action="index.html">
       <fieldset class="user">
-        <input type="text" name="username" placeholder="Usuario / eMail" required>
+        <input id="user" type="text" name="username" placeholder="Usuario / eMail" required>
         <input type="password" name="pass" placeholder="Contraseña" required>
       </fieldset>
       <fieldset class="mantener_Conectado">
         <input type="checkbox" name="allways_On"> Mantenerme conectado
       </fieldset>
-      <input id="enviar" type="submit" onclick="sessionStorage.setItem('visitado','1'); location.href=index.html" value="Ingresar">
+      <input id="enviar" type="submit" value="Ingresar">
     </form>
   </div>
 
