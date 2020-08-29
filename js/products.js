@@ -1,7 +1,7 @@
 const ORDER_ASC_BY_PRICE = "Precios Bajos";
 const ORDER_DESC_BY_PRICE = "Precios Altos";
 const ORDER_BY_PROD_COUNT = "Mas Relevantes";
-var currentCategoriesArray = [];
+var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
@@ -37,8 +37,8 @@ function sortCategories(criteria, array){
 function showCategoriesList(){
 
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentCategoriesArray.length; i++){
-        let product = currentCategoriesArray[i];
+    for(let i = 0; i < currentProductsArray.length; i++){
+        let product = currentProductsArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
@@ -69,10 +69,10 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     currentSortCriteria = sortCriteria;
 
     if(categoriesArray != undefined){
-        currentCategoriesArray = categoriesArray;
+        currentProductsArray = categoriesArray;
     }
 
-    currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+    currentProductsArray = sortCategories(currentSortCriteria, currentProductsArray);
 
     //Muestro las categorías ordenadas
     showCategoriesList();
@@ -133,3 +133,40 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+const formulario = document.querySelector('#formulario');
+const resultado = document.getElementById("cat-list-container");
+const filtrar = ()=>{
+
+    const texto = formulario.value.toLowerCase();
+    resultado.innerHTML = '';
+
+    for(let producto of currentProductsArray){
+        let nombre = producto.name.toLowerCase();
+        let descripcion = producto.description.toLowerCase();
+        if(nombre.indexOf(texto)!== -1 || descripcion.indexOf(texto) !== -1){
+            
+            resultado.innerHTML += `
+            <a href="product-info.html" class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">`+ producto.name +`</h4>
+                            <h4>` + producto.cost + " " + producto.currency + ` </h4>
+                        </div>
+                        <p class="mb-1">` + producto.description + `</p>
+                        <span class="align-bottom">` +"Vendidos:"+" "+ producto.soldCount + `</span>
+                    </div>
+                </div>
+            </a>
+            `
+        }
+    }
+    if(resultado.innerHTML === ''){
+        resultado.innerHTML = `<p> No se han encontrado resultados... </p> `
+    }
+}
+formulario.addEventListener('keyup',filtrar);

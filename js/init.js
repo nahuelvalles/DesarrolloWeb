@@ -40,11 +40,6 @@ var getJSONData = function(url){
     });
 }
 
-//let logueado = sessionStorage.getItem("visitado");
-//if(!location.href.endsWith("login.html")&& !(logueado==="true")){
-  //window.location.replace("login.html");
-//}
-
 if(!location.href.endsWith("login.html")&& !(sessionStorage.getItem("visitado")==="true")){
   window.location.href= "login.html";
 }
@@ -55,5 +50,15 @@ if(!location.href.endsWith("login.html")&& !(sessionStorage.getItem("visitado")=
   document.addEventListener("DOMContentLoaded", function(e){
     
   });
+  var valor = localStorage.getItem("user");
+  function crearPerfil(tuPerfil){
+    let a = document.createElement('a');
+    a.setAttribute("class", "py-2 d-none d-md-inline-block");
+    a.setAttribute("href","my-profile.html");
+    a.textContent = tuPerfil;
+    return a;
+  }
+  const Perfil = document.querySelector('nav.site-header > div');
+  Perfil.appendChild(crearPerfil(valor));
   
  

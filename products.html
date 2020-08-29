@@ -35,10 +35,10 @@
               <div class="col text-right">
                   <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
                       <label class="btn btn-light active" id="sortAsc" >
-                          <input type="radio" name="options" autocomplete="off" checked>Precios Bajos
+                          <input type="radio" name="options" autocomplete="off" checked>Más Baratos
                       </label>
                       <label class="btn btn-light" id="sortDesc" >
-                          <input type="radio" name="options" autocomplete="off">Precios Altos
+                          <input type="radio" name="options" autocomplete="off">Más Caros
                       </label>
                       <label class="btn btn-light" id="sortByCount" >
                           <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>Mas Relevantes
@@ -46,16 +46,16 @@
                   </div>
               </div>
           </div>
-                <!-- <div class="row container p-0 m-0">
-                  <div class="col">
-                    <p id="nmsiez" class="font-weight-bold text-left my-2">Autos</p>
-                  </div> -->
           <div class="row justify-content-end">
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <div class="md-form mt-0">
+                <input id="formulario" class="form-control" type="text" placeholder="Buscar: ej. 'Suzuki' "aria-label="Search">
+              </div>
+            </div>
               <div class="col-md-6 col-sm-12 mb-1 container">
                 <div class="row container p-0 m-0">
                   <div class="col">
-                    <p class="font-weight-normal text-right my-2">Precio.</p>
+                    <p class="font-weight-normal text-right my-2">Precio:</p>
                   </div>
                   <div class="col">
                     <input class="form-control" type="text" placeholder="min." id="rangeFilterCountMin">
