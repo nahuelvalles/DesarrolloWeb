@@ -5,28 +5,28 @@ var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
-function sortCategories(criteria, array){
+
+function sortCategories(criteria, array) {
     let result = [];
-    if (criteria === ORDER_ASC_BY_PRICE)
-    {
-        result = array.sort(function(a, b) {
-            if ( a.cost < b.cost ){ return -1; }
-            if ( a.cost > b.cost ){ return 1; }
+    if (criteria === ORDER_ASC_BY_PRICE) {
+        result = array.sort(function (a, b) {
+            if (a.cost < b.cost) { return -1; }
+            if (a.cost > b.cost) { return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_DESC_BY_PRICE){
-        result = array.sort(function(a, b) {
-            if ( a.cost > b.cost ){ return -1; }
-            if ( a.cost < b.cost ){ return 1; }
+    } else if (criteria === ORDER_DESC_BY_PRICE) {
+        result = array.sort(function (a, b) {
+            if (a.cost > b.cost) { return -1; }
+            if (a.cost < b.cost) { return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_BY_PROD_COUNT){
-        result = array.sort(function(a, b) {
+    } else if (criteria === ORDER_BY_PROD_COUNT) {
+        result = array.sort(function (a, b) {
             let aCount = parseInt(a.soldCount);
             let bCount = parseInt(b.soldCount);
 
-            if ( aCount > bCount ){ return -1; }
-            if ( aCount < bCount ){ return 1; }
+            if (aCount > bCount) { return -1; }
+            if (aCount < bCount) { return 1; }
             return 0;
         });
     }
@@ -34,28 +34,28 @@ function sortCategories(criteria, array){
     return result;
 }
 
-function showCategoriesList(){
+function showCategoriesList() {
 
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentProductsArray.length; i++){
+    for (let i = 0; i < currentProductsArray.length; i++) {
         let product = currentProductsArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
+            <a href="product-info.html?nombre=`+ product.name + `"class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product.name +`</h4>
+                            <h4 class="mb-1">`+ product.name + `</h4>
                             <h4>` + product.cost + " " + product.currency + ` </h4>
                         </div>
                         <p class="mb-1">` + product.description + `</p>
-                        <span class="align-bottom">` +"Vendidos:"+" "+ product.soldCount + `</span>
+                        <span class="align-bottom">` + "Vendidos:" + " " + product.soldCount + `</span>
                     </div>
                 </div>
             </a>
@@ -65,10 +65,10 @@ function showCategoriesList(){
     }
 }
 
-function sortAndShowCategories(sortCriteria, categoriesArray){
+function sortAndShowCategories(sortCriteria, categoriesArray) {
     currentSortCriteria = sortCriteria;
 
-    if(categoriesArray != undefined){
+    if (categoriesArray != undefined) {
         currentProductsArray = categoriesArray;
     }
 
@@ -81,26 +81,26 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(PRODUCTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok"){
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
             sortAndShowCategories(ORDER_ASC_BY_PRICE, resultObj.data);
         }
     });
 
-    document.getElementById("sortAsc").addEventListener("click", function(){
+    document.getElementById("sortAsc").addEventListener("click", function () {
         sortAndShowCategories(ORDER_ASC_BY_PRICE);
     });
 
-    document.getElementById("sortDesc").addEventListener("click", function(){
+    document.getElementById("sortDesc").addEventListener("click", function () {
         sortAndShowCategories(ORDER_DESC_BY_PRICE);
     });
 
-    document.getElementById("sortByCount").addEventListener("click", function(){
+    document.getElementById("sortByCount").addEventListener("click", function () {
         sortAndShowCategories(ORDER_BY_PROD_COUNT);
     });
 
-    document.getElementById("clearRangeFilter").addEventListener("click", function(){
+    document.getElementById("clearRangeFilter").addEventListener("click", function () {
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
 
@@ -110,23 +110,23 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 
-    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+    document.getElementById("rangeFilterCount").addEventListener("click", function () {
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
             minCount = parseInt(minCount);
         }
-        else{
+        else {
             minCount = undefined;
         }
 
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0) {
             maxCount = parseInt(maxCount);
         }
-        else{
+        else {
             maxCount = undefined;
         }
 
@@ -136,16 +136,16 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 const formulario = document.querySelector('#formulario');
 const resultado = document.getElementById("cat-list-container");
-const filtrar = ()=>{
+const filtrar = () => {
 
     const texto = formulario.value.toLowerCase();
     resultado.innerHTML = '';
 
-    for(let producto of currentProductsArray){
+    for (let producto of currentProductsArray) {
         let nombre = producto.name.toLowerCase();
         let descripcion = producto.description.toLowerCase();
-        if(nombre.indexOf(texto)!== -1 || descripcion.indexOf(texto) !== -1){
-            
+        if (nombre.indexOf(texto) !== -1 || descripcion.indexOf(texto) !== -1) {
+
             resultado.innerHTML += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
@@ -154,19 +154,19 @@ const filtrar = ()=>{
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ producto.name +`</h4>
+                            <h4 class="mb-1">`+ producto.name + `</h4>
                             <h4>` + producto.cost + " " + producto.currency + ` </h4>
                         </div>
                         <p class="mb-1">` + producto.description + `</p>
-                        <span class="align-bottom">` +"Vendidos:"+" "+ producto.soldCount + `</span>
+                        <span class="align-bottom">` + "Vendidos:" + " " + producto.soldCount + `</span>
                     </div>
                 </div>
             </a>
             `
         }
     }
-    if(resultado.innerHTML === ''){
+    if (resultado.innerHTML === '') {
         resultado.innerHTML = `<p> No se han encontrado resultados... </p> `
     }
 }
-formulario.addEventListener('keyup',filtrar);
+formulario.addEventListener('keyup', filtrar);
