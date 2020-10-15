@@ -26,6 +26,20 @@
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
+
+      #cartArticleContainer {
+        display: flex;
+        flex-direction: row;
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+      }
+
+      #cartArticleName {
+        display: inline;
+      }
     }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,21 +57,56 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <h1>¡Estás a un click!</h1>
+    <h2>Revisa tus artículos antes de proceder a finalizar la compra</h2>
+    <hr>
+    <br>
+    <div id="cartArticleContainer">
     </div>
+    <hr class="mb-4">
+    <hr>
+    <h5 class="mb-3">Tipo de envío</h5>
+    <form>
+      <select id="sendType" name="Tipo de envío">
+        <option value=15>Premium (2-5 días) - +15%</option>
+        <option value=7>Express (5-8 días) - +7%</option>
+        <option value=5>Standard (12 a 15 días) - +5%</option>
+      </select>
+    </form>
+    <hr class="mb-4">
+    <h4 class="mb-3">Costos</h4>
+    <ul class="list-group mb-3">
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">Precio</h6>
+          <small class="text-muted">Precio total de los productos</small>
+        </div>
+        <h4 class="text-muted"><span id="subTotal"></span></h4>
+      </li>
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">Costo de envío</h6>
+          <small id="sendCost" class="text-muted">Según el tipo de envío</small>
+        </div>
+        <h4 class="text-muted"><span id="comissionText"></span></h4>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <span id=>Sub-Total ($)</span>
+        <h4 class="text-muted"><span id="totalCostText"></span></h4>
+      </li>
+    </ul>
+    <button id="purchaseButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+      Comprar
+    </button>
+    <div id="purchaseInformation"></div>
+
   </div>
+
   <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <div class="lds-ring"></div>
   </div>
+
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>

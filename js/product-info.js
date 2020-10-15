@@ -194,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 }
             })
         }
-
     });
     //Obtener datos del JSON de la URL especificada e imprimirlos en el HTML.
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (result) {
