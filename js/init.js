@@ -59,7 +59,6 @@ let dropdownJS = `
   </div>
   `
 let barraNavegacion = document.querySelector(".container.d-flex.flex-column.flex-md-row.justify-content-between");
-console.log(barraNavegacion);
 
 barraNavegacion.innerHTML += dropdownJS;
 
