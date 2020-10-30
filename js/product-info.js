@@ -10,18 +10,19 @@ function showRelatedProducts(arrayProductsURL, arrayProductsInfoURL) {
     let htmlContentToAppend = ``;
     for (let i = 0; i < arrayProductsInfoURL.length; i++) {
         let relatedProduct = arrayProductsURL[arrayProductsInfoURL[i]];
-        htmlContentToAppend += `
-                        <div class="card col-3">
-                        <div class="view overlay">
-                           <a href="product-info.html?nombre=`+ relatedProduct.name + `"> <img  class="card-img-top" src=` + relatedProduct.imgSrc + `
-                            alt="Imagen del vehículo"></a>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">`+ relatedProduct.name + `</h4>
-                            <p class="card-text">`+ relatedProduct.description + `</p>
-                        </div>
-                        </div>
+        htmlContentToAppend +=
             `
+        <div class="card col-3">
+            <div class="view overlay">
+                <a href="product-info.html?nombre=`+ relatedProduct.name + `"> <img  class="card-img-top" src=` + relatedProduct.imgSrc + `
+                alt="Imagen del vehículo"></a>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">`+ relatedProduct.name + `</h4>
+                <p class="card-text">`+ relatedProduct.description + `</p>
+            </div>
+        </div>
+        `
     }
     document.getElementById("relatedProducts").innerHTML += htmlContentToAppend;
 }
@@ -56,12 +57,13 @@ function getCommentJSON() {
         }
         append(container, newCommentContainer);
 
-        html += `
-                <p> ` + comentario.user + ` </p>
-                <p> ` + comentario.description + ` </p>
-                <p> ` + comentario.score + ` </p>
-                <p> ` + comentario.dateTime + ` </p>
-                `
+        html +=
+            `
+        <p> ` + comentario.user + ` </p>
+        <p> ` + comentario.description + ` </p>
+        <p> ` + comentario.score + ` </p>
+        <p> ` + comentario.dateTime + ` </p>
+        `
     }
     document.getElementById("productComments").innerHTML = html;
 }
@@ -91,8 +93,10 @@ let productNameURL = getQueryVariable("nombre");
 //Función que muestra galería de imágenes.
 function productImagesCarousel(array) {
 
-    let htmlContentToAppend = `<div id="carouselExampleIndicators" class="carousel slide col-8 mt-3 mb-3 align-right" data-ride="carousel">
-    <ol class="carousel-indicators">`
+    let htmlContentToAppend = `
+    <div id="carouselExampleIndicators" class="carousel slide col-8 mt-3 mb-3 align-right" data-ride="carousel">
+    <ol class="carousel-indicators">
+    `
     for (let i = 0; i < array.length; i++) {
         if (i > 0) {
             htmlContentToAppend += `<li data-target="#carouselExampleIndicators" data-slide-to="` + i + `"></li>`
@@ -144,7 +148,8 @@ function addComment(e) {
     let dateAndHour = actualDate + ` ` + actualHour;
 
     let html = ``;
-    html = `
+    html =
+        `
     <p> ` + user + ` </p>
     <p> ` + comment + ` </p>
     <p> ` + dateAndHour + ` </p>

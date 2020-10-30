@@ -141,5 +141,21 @@ a.custom-card:hover {
 }
 
 .deleteButton{
-  margin-left: 90%;
-   }
+  margin-left: 90%;   
+}
+
+.editInformationInput{
+  display: block;
+  margin: 1%;
+}
+
+#imageDIV{
+  text-align: right;
+}
+
+.selectFileButton{
+  color: transparent;
+  margin-top: 10px;
+  margin-left: 17%;
+}
+

@@ -1,7 +1,6 @@
 var category = {};
 
 function showImagesGallery(array) {
-
     let htmlContentToAppend = "";
 
     for (let i = 0; i < array.length; i++) {
@@ -14,7 +13,6 @@ function showImagesGallery(array) {
             </div>
         </div>
         `
-
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
     }
 }
