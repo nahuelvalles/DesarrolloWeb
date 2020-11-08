@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         let totalCost = (subTotal * formulario.value) / 100;
                         sendCostHTML.innerHTML = totalCost + " UYU"
                         totalCostHTML.innerHTML = subTotal + totalCost + " UYU";
-
                     }
 
                     articleContainer.innerHTML =
@@ -121,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     }
                 })
             }
-            //-----Fin del método para eliminar uno de los artículos----
+            //----Fin del método para eliminar uno de los artículos----
 
             for (let i = 0; i < cartArticle.length; i++) {
                 const element = cartArticle[i];

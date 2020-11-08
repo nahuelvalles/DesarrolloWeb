@@ -16,11 +16,11 @@ editButton.addEventListener("click", function () {
         <hr>
         <h5> Completa tu información </h5>
         <form id="profileForm" action="#" method="GET">
-        <input class="editInformationInput" id="profileName" type="text" name="name" placeholder="Nombre completo" pattern="[a-zA-Z ]{2,254}"  title="El nombre debe contener al menos una letra mayúscula y una minúscula" required>
-        <input class="editInformationInput" id="profileAge" type="number" name="age" placeholder="Edad" min="18" max="100" title="1 o 2 dígitos">
-        <input class="editInformationInput" id="profileEmail" type="mail" name="email" placeholder="e-Mail"  title="ej. nombre@dominio.com" required>
-        <input class="editInformationInput" id="profileTlf" type="text" name="tlfNumber" placeholder="Número de teléfono" pattern="[0-9]{9}" title="9 dígitos sin espacios" required>
-        <input class="editInformationInput" value="Guardar" type="submit">
+            <input class="editInformationInput" id="profileName" type="text" name="name" placeholder="Nombre completo" pattern="[a-zA-Z ]{2,254}"  title="El nombre debe contener al menos una letra mayúscula y una minúscula" required>
+            <input class="editInformationInput" id="profileAge" type="number" name="age" placeholder="Edad" min="18" max="100" title="1 o 2 dígitos">
+            <input class="editInformationInput" id="profileEmail" type="mail" name="email" placeholder="e-Mail"  title="ej. nombre@dominio.com" required>
+            <input class="editInformationInput" id="profileTlf" type="text" name="tlfNumber" placeholder="Número de teléfono" pattern="[0-9]{9}" title="9 dígitos sin espacios" required>
+            <input class="editInformationInput" value="Guardar" type="submit">
         </form>
     `
     formToComplete.innerHTML = formHTML;
