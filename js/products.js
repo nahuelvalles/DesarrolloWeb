@@ -43,25 +43,7 @@ function showCategoriesList() {
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
 
-            // htmlContentToAppend += `
             
-                
-            //         <div class="col-3" >
-            //         <a href="product-info.html?nombre=`+ product.name + `"class="list-group-item list-group-item-action">
-            //             <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                
-                    
-            //             <div class="d-flex w-100 justify-content-between">
-            //                 <h4 class="mb-1">`+ product.name + `</h4>
-            //                 <h4>` + product.cost + " " + product.currency + ` </h4>
-            //             </div>
-            //             <p class="mb-1">` + product.description + `</p>
-            //             <span class="align-bottom">` + "Vendidos:" + " " + product.soldCount + `</span>
-            //             </a>
-            //         </div>
-                
-            
-            // `
             htmlContentToAppend+= `
             
             <div class="col-12 col-sm-6 col-md-3">
@@ -79,8 +61,6 @@ function showCategoriesList() {
               </div>
             </a>
             </div>
-            
-            
             `
         }
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
@@ -167,24 +147,6 @@ const filtrar = () => {
         let nombre = product.name.toLowerCase();
         let descripcion = product.description.toLowerCase();
         if (nombre.indexOf(texto) !== -1 || descripcion.indexOf(texto) !== -1) {
-
-            // resultado.innerHTML += `
-            // <a href="product-info.html" class="list-group-item list-group-item-action">
-            //     <div class="row">
-            //         <div class="col-3">
-            //             <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
-            //         </div>
-            //         <div class="col">
-            //             <div class="d-flex w-100 justify-content-between">
-            //                 <h4 class="mb-1">`+ producto.name + `</h4>
-            //                 <h4>` + producto.cost + " " + producto.currency + ` </h4>
-            //             </div>
-            //             <p class="mb-1">` + producto.description + `</p>
-            //             <span class="align-bottom">` + "Vendidos:" + " " + producto.soldCount + `</span>
-            //         </div>
-            //     </div>
-            // </a>
-            // `
 
             resultado.innerHTML += `
             <div class="col-12 col-sm-6 col-md-3">
