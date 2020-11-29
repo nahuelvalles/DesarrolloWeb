@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             var subTotal = 0;
             var totalPrice1 = 0
             var totalPrice2 = 0
-            let formulario = document.getElementById("sendType");
+            let formHTML = document.getElementById("sendType");
             let sendCostHTML = document.getElementById("comissionText");
             let totalCostHTML = document.getElementById("totalCostText");
 
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 </div>
                 `
                 document.getElementById("subTotal").innerHTML = subTotal + " " + "UYU";
-                let totalCost = (subTotal * formulario.value) / 100;
+                let totalCost = (subTotal * formHTML.value) / 100;
                 sendCostHTML.innerHTML = totalCost + " UYU"
                 totalCostHTML.innerHTML = subTotal + totalCost + " UYU";
             }
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         totalPrice1 = cartArticle[0].unitCost * cartArticle[0].count * 40;
                         subTotal = totalPrice1;
                         document.getElementById("subTotal").innerHTML = totalPrice1 + " UYU";
-                        let totalCost = (subTotal * formulario.value) / 100;
+                        let totalCost = (subTotal * formHTML.value) / 100;
                         sendCostHTML.innerHTML = totalCost + " UYU"
                         totalCostHTML.innerHTML = subTotal + totalCost + " UYU";
 
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         totalPrice2 = cartArticle[0].unitCost * cartArticle[0].count;
                         subTotal = totalPrice2;
                         document.getElementById("subTotal").innerHTML = totalPrice2 + " UYU";
-                        let totalCost = (subTotal * formulario.value) / 100;
+                        let totalCost = (subTotal * formHTML.value) / 100;
                         sendCostHTML.innerHTML = totalCost + " UYU"
                         totalCostHTML.innerHTML = subTotal + totalCost + " UYU";
                     }
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                             }
                             document.getElementById("subTotal").innerHTML = subTotal + " UYU";
 
-                            let totalCost = (subTotal * formulario.value) / 100;
+                            let totalCost = (subTotal * formHTML.value) / 100;
 
 
                             sendCostHTML.innerHTML = totalCost + " UYU"
@@ -138,16 +138,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     }
                     document.getElementById("subTotal").innerHTML = subTotal + " UYU";
 
-                    let totalCost = (subTotal * formulario.value) / 100;
+                    let totalCost = (subTotal * formHTML.value) / 100;
 
                     sendCostHTML.innerHTML = totalCost + " UYU"
                     totalCostHTML.innerHTML = subTotal + totalCost + " UYU";
 
                 })
             }
-            formulario.addEventListener("change", function () {
+            formHTML.addEventListener("change", function () {
 
-                let totalCost = (subTotal * formulario.value) / 100;
+                let totalCost = (subTotal * formHTML.value) / 100;
                 sendCostHTML.innerHTML = totalCost + " UYU"
                 totalCostHTML.innerHTML = subTotal + totalCost + " UYU";
 

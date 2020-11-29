@@ -39,6 +39,8 @@ var getJSONData = function (url) {
       return result;
     });
 }
+//Controla que si no estamos en login.html y además, en el sessionStorage no se encuentra "visitado" con valor true,
+//te envía automáticamente a login para que el usuario se loguee.
 if (!location.href.endsWith("login.html") && !(sessionStorage.getItem("visitado") === "true")) {
   window.location.href = "login.html";
 }
